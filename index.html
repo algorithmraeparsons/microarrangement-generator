@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+    <title>Microarrangement Generator</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        Microarrangement Generator
+      </h1>
+      <h3>
+        by Drosophiliac
+      </h3>
+    </header>
+    <main>
+      <p>
+        Refresh page for new partition.
+      </p>
+      <p>
+        <h3>
+          Random partition of 16 beats per measure:
+        </h3>
+      </p>
+      <p id="partsString"></p>
+
+      <script>
+        document.getElementById("partsString").innerHTML = generateRandomPartition(16);
+      </script>
+
+    </main>
+    <footer>
+      <!-- Credit with links to Ko-fi, Bluesky, etc -->
+
+    </footer>
+  </body>
+</html>
