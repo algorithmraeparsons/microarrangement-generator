@@ -29,19 +29,18 @@ function decimalToBinaryString(decimal){
 // Converts random binary String to a parts array.
 // Returns array (possibly with empty strings).
 // 1 = +, added together
-// 0 = -, separated, looks like + on site
+// 0 = -, separated--looks like + on website for user clarity
 // ex. beats = 4, random binary = 101/+-+, then parts = 1+1-1+1
 function binarytoPartsArray(binary){
     let partsInOnes = "";
-    let length = binary.length;
-    for (let i = 0; i < length; i++){
+    for (let i = 0; i < binary.length; i++){
         if (binary[i] == 1){
             partsInOnes += "1+"; // equivalent to -
-        } else {
+        } else { // binary[i] == 0
             partsInOnes += "1"; // equivalent to +
         }
     }
-    const parts = partsInOnes.split("+");
+    const parts = partsInOnes.split("+"); // creates array
     for (let i = 0; i < parts.length; i++){
         let num = parts[i].length;
         parts[i] = num;
@@ -82,4 +81,20 @@ function generate(beats){
     let parts = binarytoPartsArray(randomBinary);
     parts = removeEmptyParts(parts);
     return partsToPartsString(parts);
+}
+
+// Takes user beat input, validates it, and if validation passes,
+// generates a partition output, formats it, and prints it.
+// No parameters nor returns, just edits index.html's output.
+function main(){
+    const beatInput = document.getElementById("beatInput").value;
+    const validationMessage = validateBeats(beatInput);
+    document.getElementById("validationMessage").innerHTML = validationMessage;
+    let beats;
+    if (validationMessage == ""){
+        beats = beatInput;
+        document.getElementById("beatsString").innerHTML = "Random partition of " + beats + " beats:";
+        var partsString = generate(beats);
+        document.getElementById("partsString").innerHTML = partsString;
+    }
 }

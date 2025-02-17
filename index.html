@@ -17,7 +17,6 @@
       </h3>
     </header>
     <main>
-
       <p>
         Input a number of beats below to get a random partition thereof.
         Intended for generating arrangement and rhythm ideas within a section of music. 
@@ -25,7 +24,7 @@
       </p>
 
       <p>
-        <label for="beatInput">Number of beats:</label>
+        <label for="beatInput">Number of beats: </label>
         <input type="text" id="beatInput">
         <button onClick="main()">Run</button>
       </p>
@@ -35,25 +34,6 @@
       <h3><p id="beatsString"></p></h3>
 
       <p id="partsString"></p>
-
-      <script>
-        function main() {
-          const beatInput = document.getElementById("beatInput").value;
-          const validationMessage = validateBeats(beatInput);
-          document.getElementById("validationMessage").innerHTML = validationMessage;
-          let beats;
-          if (validationMessage == ""){
-            beats = beatInput;
-            document.getElementById("beatsString").innerHTML = "Random partition of " + beats + " beats:";
-            var partsString = generate(beats);
-            document.getElementById("partsString").innerHTML = partsString;
-          }
-        }
-      </script>
-
     </main>
-    <footer>
-
-    </footer>
   </body>
 </html>
