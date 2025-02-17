@@ -12,27 +12,47 @@
         Microarrangement Generator
       </h1>
       <h3>
-        by Algorithm Rae Parsons
+        by Algorithm Rae Parsons 
+        (<a href="https://github.com/algorithmraeparsons">GitHub</a>)
       </h3>
     </header>
     <main>
+
       <p>
-        Refresh page for new partition.
+        Input a number of beats below to get a random partition thereof.
+        Intended for generating arrangement and rhythm ideas within a section of music. 
+        Can be run multiple times. 
       </p>
+
       <p>
-        <h3>
-          Random partition of 16 beats per measure:
-        </h3>
+        <label for="beatInput">Number of beats:</label>
+        <input type="text" id="beatInput">
+        <button onClick="main()">Run</button>
       </p>
+
+      <p id="validationMessage"></p>
+
+      <h3><p id="beatsString"></p></h3>
+
       <p id="partsString"></p>
 
       <script>
-        document.getElementById("partsString").innerHTML = generateRandomPartition(16);
+        function main() {
+          const beatInput = document.getElementById("beatInput").value;
+          const validationMessage = validateBeats(beatInput);
+          document.getElementById("validationMessage").innerHTML = validationMessage;
+          let beats;
+          if (validationMessage == ""){
+            beats = beatInput;
+            document.getElementById("beatsString").innerHTML = "Random partition of " + beats + " beats:";
+            var partsString = generate(beats);
+            document.getElementById("partsString").innerHTML = partsString;
+          }
+        }
       </script>
 
     </main>
     <footer>
-      <!-- Credit with links to Ko-fi, Bluesky, etc -->
 
     </footer>
   </body>
